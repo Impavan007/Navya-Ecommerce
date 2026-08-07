@@ -51,16 +51,16 @@ export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [isOccasionDropdownOpen, setIsOccasionDropdownOpen] = useState(false);
+  const [isFabricDropdownOpen, setIsFabricDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileOccasionOpen, setIsMobileOccasionOpen] = useState(false);
+  const [isMobileFabricOpen, setIsMobileFabricOpen] = useState(false);
   const [isProfilePopupOpen, setIsProfilePopupOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   // Refs
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const occasionRef = useRef<HTMLDivElement>(null);
+  const fabricRef = useRef<HTMLDivElement>(null);
   const notifRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -424,14 +424,14 @@ export default function Navbar() {
       const clickedOutsideNotif = notifRef.current && !notifRef.current.contains(target);
       const clickedOutsideSearch = searchRef.current && !searchRef.current.contains(target);
       const clickedOutsideMenu = menuRef.current && !menuRef.current.contains(target);
-      const clickedOutsideOccasion = occasionRef.current && !occasionRef.current.contains(target);
+      const clickedOutsideFabric = fabricRef.current && !fabricRef.current.contains(target);
       const clickedOutsideMobileMenu = mobileMenuRef.current && !mobileMenuRef.current.contains(target);
 
       if (clickedOutsideUser) setIsUserDropdownOpen(false);
       if (clickedOutsideNotif) setIsNotifDropdownOpen(false);
       if (clickedOutsideSearch) setIsSearchOpen(false);
       if (clickedOutsideMenu) setIsMenuOpen(false);
-      if (clickedOutsideOccasion) setIsOccasionDropdownOpen(false);
+      if (clickedOutsideFabric) setIsFabricDropdownOpen(false);
 
       if (clickedOutsideMobileMenu) {
         setIsMobileMenuOpen(false);
@@ -539,15 +539,15 @@ export default function Navbar() {
     }
   };
 
-  const handleOccasionClick = (occasionLabel: string) => {
+  const handleFabricClick = (fabricLabel: string) => {
     // close any open panels/dropdowns
     setIsFilterOpen(false);
     setIsMenuOpen(false);
     setIsMobileMenuOpen(false);
     setIsSearchOpen(false);
-    setIsOccasionDropdownOpen(false);
+    setIsFabricDropdownOpen(false);
     setSearchQuery("");
-    router.push(`/productPage?occasion=${encodeURIComponent(occasionLabel)}`);
+    router.push(`/productPage?fabric=${encodeURIComponent(fabricLabel)}`);
   };
 
   // Load categories for Menu dropdown
@@ -724,11 +724,11 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Occasion Dropdown - shows the same filters outside of menu */}
-            {/* <div className="hidden md:relative md:block" ref={occasionRef}>
+            {/* Fabric Dropdown - shows the same filters outside of menu */}
+            {/* <div className="hidden md:relative md:block" ref={fabricRef}>
               <button
                 onClick={() => {
-                  setIsOccasionDropdownOpen((v) => !v);
+                  setIsFabricDropdownOpen((v) => !v);
                   // close other panels when opening
                   setIsMenuOpen(false);
                   setIsSearchOpen(false);
@@ -737,13 +737,13 @@ export default function Navbar() {
                 }}
                 className="flex items-center gap-[4px] hover:opacity-70 transition-opacity font-['Poppins'] text-[16px] leading-[24px] text-[#3D1126]"
               >
-                Occasion
-                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" className={`${isOccasionDropdownOpen ? 'rotate-180' : ''} transition-transform`}>
+                Fabric
+                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" className={`${isFabricDropdownOpen ? 'rotate-180' : ''} transition-transform`}>
                   <path d="M1 1L6 6L11 1" stroke="#3D1126" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
 
-              {isOccasionDropdownOpen && (
+              {isFabricDropdownOpen && (
                 <div className="absolute top-[44px] md:top-[60px] right-0 bg-white border border-[#d5d5d5] rounded-[8px] shadow-lg w-[300px] md:w-[320px] z-[100]">
                   <div className="px-[16px] py-[12px]">
                     {[
@@ -759,7 +759,7 @@ export default function Navbar() {
                       <button
                         key={label}
                         className="w-full text-left py-[12px] hover:bg-[#FAF6F3] font-['Poppins'] text-[13px] leading-[18px] text-[#3D1126]"
-                        onClick={() => handleOccasionClick(label)}
+                        onClick={() => handleFabricClick(label)}
                       >
                         {label}
                       </button>
@@ -851,16 +851,16 @@ export default function Navbar() {
                   <div className="border-b border-[#F3D6DC]">
                     <button
                       className="w-full flex justify-between items-center py-[20px]"
-                      onClick={() => setIsMobileOccasionOpen(v => !v)}
+                      onClick={() => setIsMobileFabricOpen(v => !v)}
                     >
                       <span className="font-poppins text-[18px] text-[#000000] font-medium">Fabric Type</span>
                       <ChevronDownIcon
-                        className={`${isMobileOccasionOpen ? 'rotate-180' : ''} transition-transform`}
+                        className={`${isMobileFabricOpen ? 'rotate-180' : ''} transition-transform`}
                         color="#3D1126"
                       />
                     </button>
                     <AnimatePresence>
-                      {isMobileOccasionOpen && (
+                      {isMobileFabricOpen && (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
@@ -873,7 +873,7 @@ export default function Navbar() {
                               key={label}
                               onClick={() => {
                                 setIsMobileMenuOpen(false);
-                                handleOccasionClick(label);
+                                handleFabricClick(label);
                               }}
                               className="w-full text-left py-[14px] px-[16px] font-poppins text-[16px] text-[#3D1126]/80 hover:bg-white/40 border-b border-[#F3D6DC]/40 last:border-0 transition-colors"
                             >

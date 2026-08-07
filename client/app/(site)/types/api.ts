@@ -689,7 +689,7 @@ export interface ApiProduct {
   name: string;
   description: string;
   brand: string;
-  occasion: string;
+  fabric: string;
   size: string[];
   rentalPrice: number;
   cleaning_fee: number;
@@ -773,7 +773,7 @@ export interface ProductDetailResponse {
   name: string;
   description: string;
   brand: string;
-  occasion: string;
+  fabric: string;
   size: string[];
   rental_price_per_day: number;
   cleaning_fee: number;
@@ -829,7 +829,7 @@ export interface CategoryProduct {
   name: string;
   description: string;
   brand: string;
-  occasion: string;
+  fabric: string;
   size: string[];
   rental_price_per_day: number;
   cleaning_fee: number;
@@ -876,7 +876,7 @@ export interface ApiCartItem {
     name: string;
     description: string;
     brand: string;
-    occasion: string;
+    fabric: string;
     size: string[];
     rental_price_per_day: number;
     cleaning_fee: number;
