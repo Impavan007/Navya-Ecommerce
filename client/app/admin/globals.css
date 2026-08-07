@@ -1,0 +1,108 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+/* Global typography: force Roboto across admin */
+@layer base {
+
+  html,
+  body {
+    font-family: var(--font-canela), serif !important;
+    background-color: #FAFAF7 !important;
+    color: #1A1A1A !important;
+  }
+
+  h1 {
+    font-family: var(--font-canela), serif !important;
+    font-weight: 600 !important;
+    font-size: 1.875rem !important;
+    color: #1A1A1A !important;
+  }
+
+  h2 {
+    font-family: var(--font-canela), serif !important;
+    font-weight: 500 !important;
+    color: #1A1A1A !important;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-canela), serif !important;
+    color: #1A1A1A !important;
+  }
+}
+
+/* Global Table & Component Styling (White & Gold Theme Palette) */
+@layer components {
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-gradient-to-r from-[#1A1A1A] to-[#2D2D2D] text-[#FAF4E8] hover:from-[#BFA15F] hover:to-[#D4AF37] hover:text-white transition-all shadow-xs;
+  }
+
+  .btn-secondary {
+    @apply bg-[#FAF4E8] text-[#BFA15F] border border-[#E5C9A4] hover:bg-[#BFA15F] hover:text-white transition-all shadow-xs;
+  }
+
+  /* Filters & Selects */
+  select,
+  input[type="text"] {
+    @apply font-roboto border-[#F0E6D2] focus:border-[#BFA15F] focus:ring-[#BFA15F];
+  }
+
+  /* Tables */
+  table thead tr th {
+    background-color: #FDFBF7 !important;
+    color: #1A1A1A !important;
+    border-bottom: 1px solid #F0E6D2 !important;
+    border-top: 1px solid #F0E6D2 !important;
+    font-weight: 700 !important;
+    @apply font-roboto;
+  }
+
+  table tbody tr {
+    border-bottom: 1px solid #F0E6D2 !important;
+  }
+
+  table tbody tr:hover {
+    background-color: #FAF6F0 !important;
+  }
+}
+
+/* Card rounding heuristics */
+@layer components {
+  .bg-white.border {
+    @apply rounded-md;
+  }
+
+  .shadow-sm.border {
+    @apply rounded-md;
+  }
+
+  .bg-white.shadow {
+    @apply rounded-md;
+  }
+
+  .bg-white.shadow-sm {
+    @apply rounded-md;
+  }
+
+  .border.bg-\[\#FAF6F3\] {
+    @apply rounded-md;
+  }
+}

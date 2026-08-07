@@ -1,0 +1,183 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global scrollbar settings - allow scrollbars by default but keep them thin */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #C8A96A transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #C8A96A;
+  border-radius: 10px;
+}
+
+/* Global typography: Inter for body, Canela for luxury headings */
+@layer base {
+
+  html,
+  body {
+    font-family: var(--font-inter), var(--font-poppins), sans-serif;
+    background-color: #FFFCF8;
+    color: #18181B;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-canela), var(--font-playfair), serif;
+  }
+}
+
+/* Card rounding: heuristics for common card containers */
+@layer components {
+  .bg-white.border {
+    @apply rounded-md;
+  }
+
+  .shadow-sm.border {
+    @apply rounded-md;
+  }
+
+  .bg-white.shadow {
+    @apply rounded-md;
+  }
+
+  .bg-white.shadow-sm {
+    @apply rounded-md;
+  }
+
+  .border.bg-\[\#FAF6F3\] {
+    @apply rounded-md;
+  }
+
+  .table-word-wrap {
+    table-layout: auto;
+    width: 100%;
+  }
+
+  .table-word-wrap th,
+  .table-word-wrap td {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .clamped-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  /* admin & Lender Table Header Styling */
+  table thead tr {
+    background-color: #F3D6DC !important;
+    border-bottom: 1px solid #F1F1F1 !important;
+    border-top: 1px solid #F1F1F1 !important;
+  }
+
+  table thead tr th {
+    color: #4B5563 !important;
+    background-color: transparent !important;
+  }
+
+  table tbody tr {
+    border-bottom: 1px solid #F1F1F1 !important;
+  }
+
+  table tbody tr:hover {
+    background-color: #FAF6F3 !important;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none !important;
+    /* IE and Edge */
+    scrollbar-width: none !important;
+    /* Firefox */
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none !important;
+    /* Chrome, Safari and Opera */
+  }
+
+  /* Animations */
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Custom Sidebar Scrollbar - specifically for containers that want a very thin scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f9f9f9;
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #BFA15F;
+    border-radius: 10px;
+    border: 1px solid #f9f9f9;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #3D1126;
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #eac7c7 #f9f9f9;
+    -ms-overflow-style: auto;
+  }
+
+  /* Shimmer Animations */
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes pulse-shimmer {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-pulse-shimmer {
+    animation: pulse-shimmer 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}

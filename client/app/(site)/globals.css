@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFF8F5;
+  --foreground: #1e1e1e;
+  --font-playfair-display: var(--font-playfair-display);
+  --font-poppins: var(--font-poppins);
+}
+
+@theme inline {
+  --color-background: #FFF8F5;
+  --color-foreground: #1e1e1e;
+  --color-cta: #2c2930;
+  --color-secondary-bg: #1d2625;
+  --color-support: #e1dac8;
+  --color-gray-5: #a8a8a8;
+  --color-gray-8: #515151;
+  --color-gray-10: #1e1e1e;
+  --color-green-light: #dcfce7;
+  --font-sans: var(--font-poppins);
+  --font-display: var(--font-playfair-display);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins), sans-serif;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-pulse {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Hide scrollbar while keeping scroll functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
+}
+
+/* .layouting {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-details-width {
+  width: fit-content;
+}
+
+@media (max-width: 1100px) {
+  .layouting {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-details-width {
+    width: 100%;
+  }
+} */

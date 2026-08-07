@@ -1,0 +1,20 @@
+export const API_ENDPOINTS = {
+  AddListing: "/lender/listing",
+  Categories: '/categories',
+  Products: '/lender/products',
+  UpdateListing: '/lender/product',
+  BulkListingAction: '/lender/products/bulk/action',
+  Review: '/lender/reviews',
+  Story: '/lender/story',
+  Order: '/lender/orders',
+  PROFILE: '/profile',
+  EarningsTransactions: '/lender/earnings/transactions',
+  SUPPORT: '/support',
+  Dashboard: '/lender/dashboard',
+  Notifications: '/notifications',
+  EarningDashboard: '/lender/earnings/overview',
+  Update: '/product',
+  Availability: '/lender/availability',
+  ListingStep: '/lender/listing/step',
+  FAQS: '/faqs'
+};
