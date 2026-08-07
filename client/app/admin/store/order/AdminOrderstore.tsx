@@ -91,19 +91,19 @@ export const useLenderOrderTableStore = create<LenderOrderTableStore>((set, get)
           id: o._id,
           orderNumber: o.order_slug_id || 'N/A',
           borrower: {
-            id: o.renterDetails?._id || '',
-            name: o.renterDetails?.name || 'Unknown Renter',
-            avatar: o.renterDetails?.profile_image || null,
+            id: o.renter?._id || o.renterDetails?._id || '',
+            name: o.renter?.name || o.renterDetails?.name || 'Unknown Buyer',
+            avatar: o.renter?.profile_image || o.renterDetails?.profile_image || null,
           },
           lender: {
-            id: o.lenderDetails?._id || '',
-            name: o.lenderDetails?.name || 'Unknown Lender',
-            avatar: o.lenderDetails?.profile_image || null,
+            id: o.lender?._id || o.lenderDetails?._id || '',
+            name: o.lender?.name || o.lenderDetails?.name || 'Unknown Seller',
+            avatar: o.lender?.profile_image || o.lenderDetails?.profile_image || null,
           },
           items: [
             {
-              name: productDetails?.name || product?.product_name || 'Unknown Item',
-              image: productDetails?.cover_image || product?.cover_image || null,
+              name: productDetails?.name || product?.product?.name || product?.product_name || 'Unknown Item',
+              image: productDetails?.cover_image || product?.product?.cover_image || product?.cover_image || null,
             },
           ],
           rentalPeriod: {
@@ -144,7 +144,7 @@ export const useLenderOrderTableStore = create<LenderOrderTableStore>((set, get)
         orderNumber: orderData.order_number || orderData.order_slug_id || 'N/A',
         borrower: {
           id: orderData.renter?._id || orderData.renter || '',
-          name: orderData.renter?.name || orderData.renterDetails?.name || 'Unknown Renter',
+          name: orderData.renter?.name || orderData.renterDetails?.name || 'Unknown Buyer',
           avatar: orderData.renter?.profile_image || orderData.renterDetails?.profile_image || null,
         },
         lender: {

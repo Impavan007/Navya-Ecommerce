@@ -411,10 +411,10 @@ export default function DashboardHeader({ onToggleSidebar, sidebarCollapsed }: D
 
         // Redirect based on new role
         if (normalizedRole === 'lender') {
-          toast.success("Switched to lender account successfully");
+          toast.success("Switched to seller account successfully");
           router.push('/lender');
         } else {
-          toast.success("Switched back to user account successfully");
+          toast.success("Switched back to buyer account successfully");
           router.push('/');
         }
       } else {
@@ -537,12 +537,12 @@ export default function DashboardHeader({ onToggleSidebar, sidebarCollapsed }: D
 
     // If user is a regular user and has switch permission, show "Switch to Lender"
     if (role === 'user' && !isSwitched) {
-      return { show: true, text: 'Switch to Lender' };
+      return { show: true, text: 'Switch to Seller' };
     }
 
     // If user is a lender OR is switched, show "Switch Back to User"
     if (role === 'lender' || isSwitched) {
-      return { show: true, text: 'Switch Back to Renter' };
+      return { show: true, text: 'Switch Back to Buyer' };
     }
 
     return { show: false, text: '' };
@@ -578,7 +578,7 @@ export default function DashboardHeader({ onToggleSidebar, sidebarCollapsed }: D
         onSwitchAccount={handleSwitchAccount}
         isSwitchingAccount={isSwitchingAccount}
         hasNextPage={pagination.hasNextPage}
-        roleLabel={userdata?.role === 'seller' || userdata?.role === 'lender' ? 'seller' : 'Buyer'}
+        roleLabel={userdata?.role === 'seller' || userdata?.role === 'lender' ? 'Seller' : 'Buyer'}
         pageTitle={pageTitle}
         pageSubtitle="Manage your listings and earnings"
         onToggleSidebar={onToggleSidebar}

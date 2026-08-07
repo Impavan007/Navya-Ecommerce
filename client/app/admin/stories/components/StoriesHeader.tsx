@@ -17,7 +17,7 @@ export default function StoriesHeader({ searchQuery, onSearchChange, onSearchSub
 
   return (
     <div className="bg-white border-b border-gray-200 px-8 py-6">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <h1 className="text-2xl font-bold text-[#3D1126] font-canela">Stories Review</h1>
 
         <div className="flex items-center space-x-3">

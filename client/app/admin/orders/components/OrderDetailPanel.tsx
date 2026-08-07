@@ -153,7 +153,7 @@ export default function OrderDetailPanel({ order: propOrder, onClose, onOrderAct
 
   const getPaymentStatusBadge = (status: string) => {
     const styles = {
-      charged: 'bg-[#F3D6DC] text-green-700 border border-green-200',
+      charged: 'bg-gray-50 text-green-700 border border-green-200',
       held: 'bg-blue-100 text-blue-700 border border-blue-200',
       pending: 'bg-gray-100 text-gray-700 border border-gray-200',
       refunded: 'bg-orange-100 text-orange-700 border border-orange-200',
@@ -292,7 +292,7 @@ export default function OrderDetailPanel({ order: propOrder, onClose, onOrderAct
             <h3 className="font-poppins font-semibold text-gray-900 mb-3">Participants</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-xs text-gray-600 mb-2">Borrower</p>
+                <p className="text-xs text-gray-600 mb-2">Buyer</p>
                 <div className="flex items-center space-x-3">
                   <AvatarCircle name={order.borrower?.name} image={order.borrower?.avatar} />
                   <div>
@@ -302,12 +302,12 @@ export default function OrderDetailPanel({ order: propOrder, onClose, onOrderAct
                 </div>
               </div>
               <div>
-                <p className="text-xs text-gray-600 mb-2">Lender</p>
+                <p className="text-xs text-gray-600 mb-2">Seller</p>
                 <div className="flex items-center space-x-3">
                   <AvatarCircle name={order.lender?.name} image={order.lender?.avatar} />
                   <div>
                     <p className="text-sm font-poppins font-medium text-gray-900">{order.lender?.name || 'Lender'}</p>
-                    <p className="text-xs text-gray-600">Verified Lender</p>
+                    <p className="text-xs text-gray-600">Verified Seller</p>
                   </div>
                 </div>
               </div>

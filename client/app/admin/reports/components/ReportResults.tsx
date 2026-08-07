@@ -165,16 +165,16 @@ export default function ReportResults({ category, data, onExport }: ReportResult
 
   const getStatusBadge = (status: string) => {
     const statusStyles = {
-      'Completed': 'bg-[#F3D6DC] text-green-800',
+      'Completed': 'bg-gray-50 text-green-800',
       'Active': 'bg-blue-100 text-blue-800',
       'Pending': 'bg-yellow-100 text-yellow-800',
       'Cancelled': 'bg-red-100 text-red-800',
-      'Success': 'bg-[#F3D6DC] text-green-800',
+      'Success': 'bg-gray-50 text-green-800',
       'Failed': 'bg-red-100 text-red-800',
       'Processing': 'bg-blue-100 text-blue-800',
-      'Resolved': 'bg-[#F3D6DC] text-green-800',
+      'Resolved': 'bg-gray-50 text-green-800',
       'Open': 'bg-red-100 text-red-800',
-      'Approved': 'bg-[#F3D6DC] text-green-800',
+      'Approved': 'bg-gray-50 text-green-800',
       'Flagged': 'bg-yellow-100 text-yellow-800',
       'Removed': 'bg-red-100 text-red-800'
     };

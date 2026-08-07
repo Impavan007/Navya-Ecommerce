@@ -243,7 +243,7 @@ export default function WaitlistDetailPanel({
           value={rejectReason}
           onChange={(e) => setRejectReason(e.target.value)}
           placeholder="Enter reason for rejection..."
-          className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-700 focus:ring-2 focus:ring-[#F3D6DC] outline-none font-roboto"
+          className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-700 focus:ring-2 focus:ring-gray-200 outline-none font-roboto"
           rows={4}
         />
         <div className="flex justify-end gap-3 mt-4">

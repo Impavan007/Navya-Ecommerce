@@ -33,7 +33,7 @@ export default function PayoutsTable({
     const statusConfig = {
       pending: { color: 'bg-gray-100 text-gray-700 border border-gray-300', icon: 'ri-time-line' },
       approved: { color: 'bg-blue-100 text-blue-700 border border-blue-300', icon: 'ri-check-line' },
-      completed: { color: 'bg-[#F3D6DC] text-green-700 border border-green-300', icon: 'ri-check-double-line' },
+      completed: { color: 'bg-gray-50 text-green-700 border border-green-300', icon: 'ri-check-double-line' },
       held: { color: 'bg-red-100 text-red-700 border border-red-300', icon: 'ri-pause-line' },
       failed: { color: 'bg-red-100 text-red-700 border border-red-300', icon: 'ri-close-line' }
     };
@@ -132,7 +132,7 @@ export default function PayoutsTable({
       render: (val) => <span className="text-sm text-gray-900 font-poppins">{val || 'N/A'}</span>
     },
     {
-      header: 'Lender',
+      header: 'Seller',
       key: 'lender',
       render: (lender: any) => (
         <div className="flex items-center space-x-3">
@@ -196,7 +196,7 @@ export default function PayoutsTable({
   ];
 
   return (
-    <div className="bg-white border border-[#F3D6DC] overflow-hidden rounded-lg">
+    <div className="bg-white border border-gray-200 overflow-hidden rounded-lg">
       <ReusableTable
         columns={columns}
         data={payouts}

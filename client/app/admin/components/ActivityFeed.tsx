@@ -24,14 +24,14 @@ export default function ActivityFeed({ recentActivity, timeFilter, loading }: Ac
         return 'bg-blue-100 text-blue-700';
       case 'returned':
       case 'completed':
-        return 'bg-[#F3D6DC] text-green-700';
+        return 'bg-gray-50 text-green-700';
       case 'refunded':
       case 'cancelled':
         return 'bg-gray-100 text-gray-700';
       case 'open':
         return 'bg-red-100 text-red-700';
       case 'resolved':
-        return 'bg-[#F3D6DC] text-green-700';
+        return 'bg-gray-50 text-green-700';
 
 
       default:
@@ -61,7 +61,7 @@ export default function ActivityFeed({ recentActivity, timeFilter, loading }: Ac
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="bg-white border border-[#F3D6DC] p-6 space-y-4">
+            <div key={i} className="bg-white border border-gray-200 p-6 space-y-4">
               <Skeleton variant="rect" width="100%" height={40} className="mb-4" />
               {[...Array(4)].map((_, j) => (
                 <div key={j} className="flex justify-between items-start border-b border-gray-50 pb-4">

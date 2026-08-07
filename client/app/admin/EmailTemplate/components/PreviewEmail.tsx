@@ -23,7 +23,7 @@ export default function PreviewEmail({
             <div className="w-full max-w-[768px] bg-white rounded-[8px] shadow-[0px_8px_10px_-6px_rgba(0,0,0,0.1),0px_20px_25px_-5px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col max-h-[90vh]">
 
                 {/* Header */}
-                <div className="flex justify-between items-center px-6 py-[16px] min-h-[85px] bg-[#F3D6DC] shrink-0">
+                <div className="flex justify-between items-center px-6 py-[16px] min-h-[85px] bg-gray-50 shrink-0">
                     <div className="flex flex-col">
                         <h2 className="text-[18px] leading-[28px] font-semibold text-[#111827]">
                             Email Preview

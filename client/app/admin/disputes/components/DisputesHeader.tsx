@@ -67,7 +67,7 @@ export default function DisputesHeader({
 
   return (
     <div className="bg-gray-50 border-b border-gray-200 px-8 py-6 font-poppins">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <h1 className="text-2xl font-bold text-[#3D1126] font-canela">
           Disputes Management
         </h1>
@@ -136,7 +136,7 @@ export default function DisputesHeader({
             <select
               value={filters.dateRange}
               onChange={(e) => onFiltersChange({ ...filters, dateRange: e.target.value })}
-              className="border border-gray-200 px-3 py-2 text-sm bg-[#F3D6DC] text-black focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent font-playfair"
+              className="border border-gray-200 px-3 py-2 text-sm bg-gray-50 text-black focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent font-playfair"
             >
               {dateRangeOptions.map(option => (
                 <option key={option.value} value={option.value}>

@@ -132,7 +132,7 @@ export default function PayoutsHeader({ filters, statusCounts, onFiltersChange, 
               <select
                 value={filters.dateRange}
                 onChange={(e) => onFiltersChange({ ...filters, dateRange: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300  text-sm focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent bg-[#F3D6DC] text-black pr-8 font-playfair"
+                className="w-full px-3 py-2 border border-gray-300  text-sm focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent bg-gray-50 text-black pr-8 font-playfair"
               >
                 <option value="all">All time</option>
                 <option value="today">Today</option>
@@ -172,7 +172,7 @@ export default function PayoutsHeader({ filters, statusCounts, onFiltersChange, 
                     amountTo 
                   });
                 }}
-                className="w-full px-3 py-2 border border-gray-300  text-sm focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent bg-[#F3D6DC] text-black pr-8 font-playfair"
+                className="w-full px-3 py-2 border border-gray-300  text-sm focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent bg-gray-50 text-black pr-8 font-playfair"
               >
                 <option value="all">All amounts</option>
                 <option value="0-100">Rs.0 - Rs.100</option>
@@ -200,7 +200,7 @@ export default function PayoutsHeader({ filters, statusCounts, onFiltersChange, 
               <select
                 value={filters.paymentMethod || 'all'}
                 onChange={(e) => onFiltersChange({ ...filters, paymentMethod: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300  text-sm focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent bg-[#F3D6DC] text-black pr-8 font-playfair"
+                className="w-full px-3 py-2 border border-gray-300  text-sm focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent bg-gray-50 text-black pr-8 font-playfair"
               >
                 <option value="all">All methods</option>
                 <option value="bank">Bank Transfer</option>

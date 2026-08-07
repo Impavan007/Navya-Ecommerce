@@ -8,7 +8,7 @@ interface BulkActionsBarProps {
 
 export default function BulkActionsBar({ selectedCount, onBulkAction, onClearSelection }: BulkActionsBarProps) {
   return (
-    <div className="bg-[#F3D6DC] border border-[#F3D6DC] p-4 font-roboto rounded-lg">
+    <div className="bg-gray-50 border border-gray-200 p-4 font-roboto rounded-lg">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <i className="ri-checkbox-multiple-line w-5 h-5 flex items-center justify-center text-gray-700 mr-2"></i>
@@ -36,7 +36,7 @@ export default function BulkActionsBar({ selectedCount, onBulkAction, onClearSel
 
           <button
             onClick={() => onBulkAction('reject')}
-            className="px-4 py-2 border border-[#F3D6DC] text-gray-700 bg-white hover:bg-gray-50 transition-colors text-sm font-medium whitespace-nowrap font-roboto rounded-lg shadow-sm"
+            className="px-4 py-2 border border-gray-200 text-gray-700 bg-white hover:bg-gray-50 transition-colors text-sm font-medium whitespace-nowrap font-roboto rounded-lg shadow-sm"
           >
             <i className="ri-close-line w-4 h-4 flex items-center justify-center mr-2 inline-flex"></i>
             Reject All

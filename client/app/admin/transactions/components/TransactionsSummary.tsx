@@ -123,7 +123,7 @@ export default function TransactionsSummary({ statistics, loading }: Transaction
               <div className={`w-12 h-12 rounded-lg flex items-center justify-center border ${
                 index === 0 ? 'bg-gray-100 border-gray-300' :
                 index === 1 ? 'bg-gray-100 border-gray-300' :
-                index === 2 ? 'bg-[#F3D6DC] border-green-300' :
+                index === 2 ? 'bg-gray-50 border-green-300' :
                 index === 3 ? 'bg-orange-100 border-orange-300' :
                 'bg-purple-100 border-purple-300'
               }`}>

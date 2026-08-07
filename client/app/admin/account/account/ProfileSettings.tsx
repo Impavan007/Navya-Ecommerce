@@ -374,7 +374,7 @@ export default function ProfileSettings() {
             </button>
             <button
               onClick={handleSave}
-              className="px-6 py-2 text-sm font-medium text-black bg-[#F3D6DC] hover:bg-[#ebbdc5] transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#F3D6DC] focus:ring-offset-2 rounded font-poppins"
+              className="px-6 py-2 text-sm font-medium text-black bg-gray-50 hover:bg-[#ebbdc5] transition-colors cursor-pointer whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 rounded font-poppins"
             >
               Save Changes
             </button>

@@ -274,7 +274,7 @@ export default function OrdersTable({
       render: (val) => <span className="font-mono text-sm font-semibold text-gray-800">{val}</span>
     },
     {
-      header: 'Borrower',
+      header: 'Buyer',
       key: 'borrower',
       render: (_, order) => (
         <div className="flex flex-col items-center text-center space-y-1">
@@ -284,7 +284,7 @@ export default function OrdersTable({
       )
     },
     {
-      header: 'Lender',
+      header: 'Seller',
       key: 'lender',
       render: (_, order) => (
         <div className="flex flex-col items-center text-center space-y-1">
@@ -325,26 +325,8 @@ export default function OrdersTable({
       )
     },
     {
-      header: 'Rental Period',
-      key: 'rentalPeriod',
-      render: (rp: any) => (
-        <div className="text-xs">
-          <p className="text-gray-900">
-            {new Date(rp.start).toLocaleDateString()} →{' '}
-            {new Date(rp.end).toLocaleDateString()}
-          </p>
-          <p className="text-gray-500 text-xs">+{rp.buffer}d buffer</p>
-        </div>
-      )
-    },
-    {
       header: 'Amount',
       key: 'totalAmount',
-      render: (val) => <span className="text-sm font-semibold text-gray-900">Rs.{val}</span>
-    },
-    {
-      header: 'Deposit',
-      key: 'depositHeld',
       render: (val) => <span className="text-sm font-semibold text-gray-900">Rs.{val}</span>
     },
     {
@@ -391,7 +373,52 @@ export default function OrdersTable({
 
     return (
       <div className={`transition-opacity duration-300 ${loading ? 'opacity-60' : 'opacity-100'}`}>
-        <div className="overflow-x-auto custom-scrollbar pb-2">
+        
+        {/* Mobile Card View */}
+        <div className="block md:hidden p-4 space-y-4 bg-gray-50">
+          {orders.map((item, rowIdx) => {
+            const id = String(item.id);
+            const isSelected = selectedOrders.includes(id);
+            
+            return (
+              <div 
+                key={id || rowIdx} 
+                className={`bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden cursor-pointer transition-shadow hover:shadow-md`}
+                onClick={() => onOrderClick && onOrderClick(item)}
+              >
+                <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 flex items-center justify-between" onClick={(e) => e.stopPropagation()}>
+                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider font-canela">Select Order</span>
+                  <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={() => {
+                      const newSelected = selectedOrders.includes(id)
+                        ? selectedOrders.filter(sid => sid !== id)
+                        : [...selectedOrders, id];
+                      onSelectionChange(newSelected);
+                    }}
+                    className="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary cursor-pointer"
+                  />
+                </div>
+                <div className="p-4 space-y-3">
+                  {columns.map((column, colIdx) => (
+                    <div key={colIdx} className="flex justify-between items-center text-sm font-roboto border-b border-gray-100 pb-2 last:border-0 last:pb-0">
+                      <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider font-canela">{column.header}</span>
+                      <div className="text-gray-900 flex-1 flex justify-end text-right pl-4">
+                        {column.render
+                          ? column.render((item as any)[column.key], item)
+                          : String((item as any)[column.key])}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Desktop Table View */}
+        <div className="hidden md:block overflow-x-auto custom-scrollbar pb-2">
           <table className="w-full divide-y divide-gray-200">
             <thead className={headerClassName}>
               <tr>

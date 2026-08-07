@@ -37,7 +37,7 @@ export default function ReportsHeader({
         <p className="text-gray-600">Generate and export platform performance reports</p>
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-wrap items-center gap-2 md:gap-4">
         {/* Search */}
         <div className="relative flex items-center">
           <div className="relative">

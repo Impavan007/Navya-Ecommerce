@@ -52,7 +52,7 @@ export default function StoriesTable({ stories, loading, onOpenStory }: StoriesT
       )
     },
     {
-      header: 'Lender',
+      header: 'Seller',
       key: 'lender',
       render: (lender) => (
         <div className="flex items-center space-x-3">

@@ -39,14 +39,14 @@ export default function UsersHeader({
             Users Management
           </h1>
           <p className="text-gray-600 font-roboto">
-            Manage Renters and lenders across the platform
+            Manage Buyers and Sellers across the platform
           </p>
         </div>
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4">
           <button
             onClick={() => setShowFilters(!showFilters)}
             className={`px-4 py-2  border text-sm font-medium transition-colors whitespace-nowrap font-roboto ${showFilters
-              ? "bg-[#F3D6DC] border-[#F3D6DC] text-[#4B5563]"
+              ? "bg-gray-50 border-gray-200 text-[#4B5563]"
               : "bg-white border-gray-200 text-gray-700 hover:bg-[#FAF6F3]"
               }`}
           >
@@ -72,7 +72,7 @@ export default function UsersHeader({
       </div>
 
       {/* Search Bar */}
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-wrap items-center gap-2 md:gap-4">
         <div className="flex-1 max-w-md flex">
           <div className="relative flex-1">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -86,7 +86,7 @@ export default function UsersHeader({
               onChange={(e) => setLocalSearch(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Search by name, email, or user ID..."
-              className="block w-full pl-10 pr-3 py-3 border border-gray-200  text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#F3D6DC] focus:border-transparent bg-white font-roboto rounded-l-lg"
+              className="block w-full pl-10 pr-3 py-3 border border-gray-200  text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent bg-white font-roboto rounded-l-lg"
             />
           </div>
           <button
@@ -111,7 +111,7 @@ export default function UsersHeader({
                 onChange={(e) =>
                   onFiltersChange({ ...filters, role: e.target.value })
                 }
-                className="w-full px-3 py-2 border border-gray-200  text-sm focus:outline-none focus:ring-2 focus:ring-[#F3D6DC] focus:border-transparent bg-[#F3D6DC] text-black pr-8 font-roboto"
+                className="w-full px-3 py-2 border border-gray-200  text-sm focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent bg-gray-50 text-black pr-8 font-roboto"
               >
                 <option value="">All Roles</option>
                 <option value="Renter">Renter</option>
@@ -127,7 +127,7 @@ export default function UsersHeader({
                 onChange={(e) =>
                   onFiltersChange({ ...filters, status: e.target.value })
                 }
-                className="w-full px-3 py-2 border border-gray-200  text-sm focus:outline-none focus:ring-2 focus:ring-[#F3D6DC] focus:border-transparent bg-[#F3D6DC] text-black pr-8 font-roboto"
+                className="w-full px-3 py-2 border border-gray-200  text-sm focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent bg-gray-50 text-black pr-8 font-roboto"
               >
                 <option value="">All Statuses</option>
                 <option value="Active">Active</option>
@@ -144,7 +144,7 @@ export default function UsersHeader({
                 onChange={(e) =>
                   onFiltersChange({ ...filters, dateJoined: e.target.value })
                 }
-                className="w-full px-3 py-2 border border-gray-200  text-sm focus:outline-none focus:ring-2 focus:ring-[#F3D6DC] focus:border-transparent bg-[#F3D6DC] text-black pr-8 font-roboto"
+                className="w-full px-3 py-2 border border-gray-200  text-sm focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent bg-gray-50 text-black pr-8 font-roboto"
               >
                 <option value="">All Time</option>
                 <option value="today">Today</option>

@@ -65,7 +65,7 @@ export default function VersionHistory({ open, onClose }: VersionHistoryProps) {
       ">
 
                 {/* HEADER */}
-                <div className="flex justify-between items-center px-6 py-4 bg-[#F3D6DC]">
+                <div className="flex justify-between items-center px-6 py-4 bg-gray-50">
 
                     <div>
                         <h2 className="text-[18px] font-semibold text-[#111827] leading-[28px]">

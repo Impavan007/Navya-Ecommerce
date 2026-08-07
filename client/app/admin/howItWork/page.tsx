@@ -224,7 +224,7 @@ export default function HowItWork() {
                 <div className="w-full space-y-8">
 
                     {/* ================= HEADER BANNER ================= */}
-                    <div className="bg-[#F3D6DC] border border-[#E3B8BF] rounded-xl p-6">
+                    <div className="bg-gray-50 border border-[#E3B8BF] rounded-xl p-6">
                         <h1 className="text-2xl font-bold text-[#111827] font-canela">
                             Edit "How It Works"
                         </h1>
@@ -398,7 +398,7 @@ export default function HowItWork() {
                                     <button
                                         onClick={() => handleTabChange("renter")}
                                         className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all duration-300 ${activeTab === "renter"
-                                            ? "bg-[#F3D6DC] text-[#3D1126]"
+                                            ? "bg-gray-50 text-[#3D1126]"
                                             : "text-[#6F6F6F] hover:bg-gray-50"
                                             }`}
                                     >
@@ -407,7 +407,7 @@ export default function HowItWork() {
                                     <button
                                         onClick={() => handleTabChange("lender")}
                                         className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all duration-300 ${activeTab === "lender"
-                                            ? "bg-[#F3D6DC] text-[#3D1126]"
+                                            ? "bg-gray-50 text-[#3D1126]"
                                             : "text-[#6F6F6F] hover:bg-gray-50"
                                             }`}
                                     >

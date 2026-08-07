@@ -23,14 +23,14 @@ export default function WaitlistHeader({ searchQuery, onSearchChange, onExport }
   };
 
   return (
-    <div className="bg-[#F3D6DC] shadow-sm border border-[#F3D6DC] p-6 font-roboto rounded-xl">
-      <div className="flex items-center justify-between mb-4">
+    <div className="bg-gray-50 shadow-sm border border-gray-200 p-6 font-roboto rounded-xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
         <div>
           <h1 className="text-2xl font-bold text-[#3D1126] font-canela">Waitlist & Invites</h1>
           <p className="text-gray-600 mt-1 font-roboto">Manage beta waitlist and invitation system</p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <div className="relative flex items-center">
             <div className="relative">
               <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 flex items-center justify-center"></i>
@@ -40,7 +40,7 @@ export default function WaitlistHeader({ searchQuery, onSearchChange, onExport }
                 value={localSearch}
                 onChange={(e) => setLocalSearch(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="pl-10 pr-4 py-2 border border-[#F3D6DC] focus:ring-2 focus:ring-[#F3D6DC] focus:border-transparent text-sm w-80 font-roboto rounded-l-lg"
+                className="pl-10 pr-4 py-2 border border-gray-200 focus:ring-2 focus:ring-gray-200 focus:border-transparent text-sm w-80 font-roboto rounded-l-lg"
               />
             </div>
             <button

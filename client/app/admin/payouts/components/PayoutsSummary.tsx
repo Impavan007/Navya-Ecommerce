@@ -24,7 +24,7 @@ export default function PayoutsSummary({ stats }: PayoutsSummaryProps) {
       subtitle: `${stats?.byStatus?.completed?.count || 0} payouts`,
       icon: 'ri-check-line',
       color: 'text-green-700',
-      bgColor: 'bg-[#F3D6DC] border border-green-300',
+      bgColor: 'bg-gray-50 border border-green-300',
       trend: stats?.summary?.trend?.processing || '0%',
       trendUp: true
     },
@@ -53,7 +53,7 @@ export default function PayoutsSummary({ stats }: PayoutsSummaryProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
       {summaryCards.map((card, index) => (
-        <div key={index} className="bg-[#F3D6DC]  p-6  border border-[#F3D6DC]">
+        <div key={index} className="bg-gray-50  p-6  border border-gray-200">
           <div className="flex items-center justify-between mb-4">
             <div className={`w-12 h-12 ${card.bgColor}  flex items-center justify-center`}>
               <div className={`w-6 h-6 ${card.color} flex items-center justify-center`}>
@@ -76,4 +76,4 @@ export default function PayoutsSummary({ stats }: PayoutsSummaryProps) {
       ))}
     </div>
   );
-}
+}

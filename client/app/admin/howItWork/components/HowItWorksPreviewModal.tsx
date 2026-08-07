@@ -53,7 +53,7 @@ export default function HowItWorksPreviewModal({
       title="How It Works Preview"
       size="full"
     >
-      <div className="bg-[#F3D6DC] -m-6  max-h-[80vh] overflow-y-auto font-poppins">
+      <div className="bg-gray-50 -m-6  max-h-[80vh] overflow-y-auto font-poppins">
         {/* Top Section */}
         <div className="mx-auto px-[40px] py-16 lg:py-24">
 
@@ -116,7 +116,7 @@ export default function HowItWorksPreviewModal({
         </div>
 
         {/* Steps Section */}
-        <div className="bg-[#F3D6DC] py-16">
+        <div className="bg-gray-50 py-16">
           <div className=" mx-auto px-[40px]">
             {/* Toggle Buttons (Repositioned) */}
             <div className="flex justify-center mb-16">
@@ -124,7 +124,7 @@ export default function HowItWorksPreviewModal({
                 <button
                   onClick={() => setLocalActiveTab("renter")}
                   className={`px-8 py-3 rounded-xl text-lg font-canela font-semibold transition-all duration-300 ${localActiveTab === "renter"
-                    ? "bg-[#F3D6DC] text-[#3D1126]"
+                    ? "bg-gray-50 text-[#3D1126]"
                     : "text-[#6F6F6F] hover:bg-gray-50"
                     }`}
                 >
@@ -133,7 +133,7 @@ export default function HowItWorksPreviewModal({
                 <button
                   onClick={() => setLocalActiveTab("lender")}
                   className={`px-8 py-3 rounded-xl text-lg font-canela font-semibold transition-all duration-300 ${localActiveTab === "lender"
-                    ? "bg-[#F3D6DC] text-[#3D1126]"
+                    ? "bg-gray-50 text-[#3D1126]"
                     : "text-[#6F6F6F] hover:bg-gray-50"
                     }`}
                 >
@@ -145,7 +145,7 @@ export default function HowItWorksPreviewModal({
               {displaySteps.map((step, index) => (
                 <div
                   key={step.id}
-                  className="bg-[#F3D6DC] p-8 rounded-sm space-y-4 flex flex-col h-full"
+                  className="bg-gray-50 p-8 rounded-sm space-y-4 flex flex-col h-full"
                 >
                   <div className="w-12 h-12 flex-shrink-0">
                     {step.image ? (

@@ -38,13 +38,13 @@ export default function MessagingHeader({
 
   return (
 <div className="bg-white border-b border-gray-200 px-8  pb-3">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-[#3D1126] font-canela">Messaging Oversight</h1>
           <p className="text-gray-600 mt-2">Monitor and moderate borrower-lender conversations</p>
         </div>
         
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4">
           <button
             onClick={() => setShowFilters(!showFilters)}
             className={`px-4 py-2  border transition-colors whitespace-nowrap ${
@@ -75,7 +75,7 @@ export default function MessagingHeader({
         </div>
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-wrap items-center gap-2 md:gap-4">
         <div className="flex-1 max-w-md flex">
           <div className="relative flex-1">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
