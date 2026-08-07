@@ -32,7 +32,7 @@ export interface LenderProduct {
   size: string[];
   cleaning_fee: number;
   security_deposit: number;
-  occasion: string;
+  fabric: string;
   status: string;
   isFeatured: boolean;
   created_at: string;

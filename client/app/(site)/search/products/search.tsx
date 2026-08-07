@@ -30,7 +30,7 @@ interface PaginationInfo {
 export default function SearchProductsPage() {
   const searchParams = useSearchParams();
   const query = (searchParams.get("q") || "").trim();
-  const occasion = (searchParams.get("occasion") || "").trim();
+  const fabric = (searchParams.get("fabric") || "").trim();
   const pageParam = Number(searchParams.get("page"));
 
   const [products, setProducts] = useState<SearchProduct[]>([]);
@@ -39,20 +39,20 @@ export default function SearchProductsPage() {
   const [pagination, setPagination] = useState<PaginationInfo | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1);
-  const activeSearchTerm = searchTerm || query || occasion;
+  const activeSearchTerm = searchTerm || query || fabric;
 
   useEffect(() => {
     const nextPage = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
     setCurrentPage(nextPage);
   }, [pageParam]);
 
-  // Reset to first page when search term (q or occasion) changes
+  // Reset to first page when search term (q or fabric) changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [occasion, query]);
+  }, [fabric, query]);
 
   const fetchSearchResults = useCallback(async () => {
-    const searchValue = occasion || query;
+    const searchValue = fabric || query;
 
     if (!searchValue) {
       setLoading(false);
@@ -67,8 +67,8 @@ export default function SearchProductsPage() {
       setError(null);
 
       const response = await productsApiService.searchProducts(
-        occasion ? undefined : query,
-        { page: currentPage, occasion: occasion || undefined }
+        fabric ? undefined : query,
+        { page: currentPage, fabric: fabric || undefined }
       );
 
       if (response.success && response.data) {
@@ -88,7 +88,7 @@ export default function SearchProductsPage() {
     } finally {
       setLoading(false);
     }
-  }, [occasion, query, currentPage]);
+  }, [fabric, query, currentPage]);
 
   // Fetch search results when params or page change
   useEffect(() => {

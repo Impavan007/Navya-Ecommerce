@@ -19,7 +19,7 @@ export default function ProductsPageFile() {
 
     const [isSortOpen, setIsSortOpen] = useState(false);
     const [openCategory, setOpenCategory] = useState(true);
-    const [openOccasion, setOpenOccasion] = useState(true);
+    const [openFabric, setOpenFabric] = useState(true);
     const [selectedRange, setSelectedRange] = useState<{ start: Date | null, end: Date | null }>({ start: null, end: null });
     const [currentPage, setCurrentPage] = useState(1);
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
@@ -34,12 +34,11 @@ export default function ProductsPageFile() {
     const [pagination, setPagination] = useState<any>(null);
 
     const urlCategory = searchParams.get('category') || "";
-    const urlOccasion = searchParams.get('occasion') || "";
+    const urlFabric = searchParams.get('fabric') || "";
 
     // Filter States
     const [selectedCategory, setSelectedCategory] = useState<string>(urlCategory);
-    const [selectedOccasion, setSelectedOccasion] = useState<string>(urlOccasion);
-    const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
+    const [selectedFabric, setSelectedFabric] = useState<string>(urlFabric);
     const [priceRange, setPriceRange] = useState({ min: 1, max: 2300 }); // Default matching user request limit or reasonable range
     const [rentalDays, setRentalDays] = useState(4);
     const [availableNow, setAvailableNow] = useState(false);
@@ -49,21 +48,20 @@ export default function ProductsPageFile() {
     const hasAnyFilter = useMemo(() => {
         return (
             selectedCategory !== "" ||
-            selectedOccasion !== "" ||
-            selectedSizes.length > 0 ||
+            selectedFabric !== "" ||
             priceRange.min > 1 ||
             priceRange.max < 2300 ||
             availableNow ||
             topLenders
         );
-    }, [selectedCategory, selectedOccasion, selectedSizes, priceRange, availableNow, topLenders]);
+    }, [selectedCategory, selectedFabric, priceRange, availableNow, topLenders]);
 
     // Sync filters with URL parameters
     useEffect(() => {
         setSelectedCategory(urlCategory);
-        setSelectedOccasion(urlOccasion);
+        setSelectedFabric(urlFabric);
         setCurrentPage(1);
-    }, [urlCategory, urlOccasion, urlQuery]);
+    }, [urlCategory, urlFabric, urlQuery]);
 
     // Fetch Categories
     useEffect(() => {
@@ -93,8 +91,7 @@ export default function ProductsPageFile() {
             };
 
             if (selectedCategory) params.category = selectedCategory;
-            if (selectedOccasion) params.occasion = selectedOccasion;
-            if (selectedSizes.length > 0) params.sizes = selectedSizes.join(",");
+            if (selectedFabric) params.fabric = selectedFabric;
             if (priceRange.min > 1) params.min_price = priceRange.min;
             if (priceRange.max < 2300) params.max_price = priceRange.max;
             if (availableNow) params.available = true;
@@ -114,7 +111,7 @@ export default function ProductsPageFile() {
         } finally {
             setLoading(false);
         }
-    }, [currentPage, sortBy, selectedCategory, selectedOccasion, selectedSizes, priceRange, availableNow, topLenders, urlQuery]);
+    }, [currentPage, sortBy, selectedCategory, selectedFabric, priceRange, availableNow, topLenders, urlQuery]);
 
     // Simple debounce implementation
     const debounceRef = useRef<NodeJS.Timeout | null>(null);
@@ -172,14 +169,7 @@ export default function ProductsPageFile() {
         return () => {
             if (debounceRef.current) clearTimeout(debounceRef.current);
         };
-    }, [sortBy, selectedCategory, selectedOccasion, selectedSizes, availableNow, topLenders, currentPage, priceRange, urlQuery, fetchProducts]);
-
-    const toggleSize = (size: string) => {
-        setSelectedSizes(prev =>
-            prev.includes(size) ? prev.filter(s => s !== size) : [...prev, size]
-        );
-        setCurrentPage(1);
-    };
+    }, [sortBy, selectedCategory, selectedFabric, availableNow, topLenders, currentPage, priceRange, urlQuery, fetchProducts]);
 
     const handleSortChange = (option: string) => {
         const sortMap: Record<string, string> = {
@@ -288,8 +278,7 @@ export default function ProductsPageFile() {
                                     <button
                                         onClick={() => {
                                             setSelectedCategory("");
-                                            setSelectedOccasion("");
-                                            setSelectedSizes([]);
+                                            setSelectedFabric("");
                                             setPriceRange({ min: 1, max: 2300 });
                                             setRentalDays(4);
                                             setAvailableNow(false);
@@ -360,25 +349,17 @@ export default function ProductsPageFile() {
                         </Accordion>
 
                         <Accordion
-                            title="Occasion"
-                            open={openOccasion}
-                            toggle={() => setOpenOccasion(!openOccasion)}
+                            title="Fabric"
+                            open={openFabric}
+                            toggle={() => setOpenFabric(!openFabric)}
                         >
-                            {/* <div
-                                className={`border-b border-[#E3E3E3] py-[8px] text-[13px] font-poppins cursor-pointer transition-colors pl-1 ${!selectedOccasion ? 'text-black font-bold' : 'text-[#555] hover:text-black'}`}
-                                onClick={() => { setSelectedOccasion(""); setCurrentPage(1); }}
-                            >
-                                All Occasions
-                            </div> */}
                             {[
-                                "Everyday", "Work / Office", "Party / Night out",
-                                "Wedding guest", "Formal event",
-                                "Holiday / vacation", "Special occasion"
+                                "Silk", "Linen", "Cotton", "Velvet", "Tweed", "Satin", "Wool", "Denim", "Leather", "Lace"
                             ].map(item => (
                                 <div
                                     key={item}
-                                    className={`border-b border-[#E3E3E3] py-[8px] text-[13px] font-poppins cursor-pointer transition-colors pl-1 ${selectedOccasion === item ? 'text-black font-bold' : 'text-[#3D1126] hover:text-black'}`}
-                                    onClick={() => { setSelectedOccasion(item); setCurrentPage(1); }}
+                                    className={`border-b border-[#E3E3E3] py-[8px] text-[13px] font-poppins cursor-pointer transition-colors pl-1 ${selectedFabric === item ? 'text-black font-bold' : 'text-[#3D1126] hover:text-black'}`}
+                                    onClick={() => { setSelectedFabric(item); setCurrentPage(1); }}
                                 >
                                     {item}
                                 </div>
@@ -456,22 +437,7 @@ export default function ProductsPageFile() {
                             </div>
                         </Section>
 
-                        {/* SIZE GRID */}
-                        <Section title="Size">
-                            <div className="flex flex-wrap gap-2 mt-5">
-                                {[
-                                    "XS (UK/IN 6)", "S (UK/IN 8)", "M (UK/IN 10)", "L (UK/IN 12)", "XL (UK/IN 14)", "XXL (UK/IN 16)", "3XL (UK/IN 18)",
-                                    "4XL (UK/IN 20)", "5XL (UK/IN 22)"
-                                ].map(size => (
-                                    <button key={size}
-                                        onClick={() => toggleSize(size)}
-                                        className={`font-medium border py-[9px] px-2 text-[16px] font-poppins rounded-[2px] transition-all bg-transparent whitespace-nowrap ${selectedSizes.includes(size) ? 'border-black text-black bg-black/5' : 'border-gray-200 text-[#3D1126] hover:border-black hover:text-black'
-                                            }`}>
-                                        {size}
-                                    </button>
-                                ))}
-                            </div>
-                        </Section>
+
 
                         <div className="mt-6 mb-10 pt-4 border-t border-[#eee] space-y-6">
                             {[
@@ -532,8 +498,7 @@ export default function ProductsPageFile() {
                                 <button
                                     onClick={() => {
                                         setSelectedCategory("");
-                                        setSelectedOccasion("");
-                                        setSelectedSizes([]);
+                                        setSelectedFabric("");
                                         setPriceRange({ min: 1, max: 2300 });
                                         setRentalDays(4);
                                         setAvailableNow(false);
