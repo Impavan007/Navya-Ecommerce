@@ -49,7 +49,7 @@ export default function SendTestMail({ open, onClose }: SendTestMailProps) {
         "
             >
                 {/* HEADER */}
-                <div className="flex justify-between items-center px-6 py-[16px] bg-[#F3D6DC]">
+                <div className="flex justify-between items-center px-6 py-[16px] bg-gray-50">
                     <h2 className="text-[18px] font-semibold leading-[28px] text-[#111827]">
                         Send Test Email
                     </h2>

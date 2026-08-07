@@ -44,7 +44,7 @@ export default function VersionHistoryModal({
       title="Version History"
       size="lg"
     >
-      <div className="-m-6 bg-[#F3D6DC] p-6 max-h-[70vh] overflow-y-auto hide-scrollbar">
+      <div className="-m-6 bg-gray-50 p-6 max-h-[70vh] overflow-y-auto hide-scrollbar">
         <p className="text-[#6B7280] mb-8 font-poppins text-sm">
           All published versions are saved and can be restored if needed
         </p>
@@ -73,7 +73,7 @@ export default function VersionHistoryModal({
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="font-bold text-gray-900 font-poppins">Version {v.version}</h3>
                           {isCurrent && (
-                            <span className="px-2 py-0.5 bg-[#F3D6DC] text-green-700 text-[10px] font-bold rounded-full uppercase">
+                            <span className="px-2 py-0.5 bg-gray-50 text-green-700 text-[10px] font-bold rounded-full uppercase">
                               Current
                             </span>
                           )}
@@ -84,7 +84,7 @@ export default function VersionHistoryModal({
                       </div>
                     </div>
 
-                    <span className={`px-3 py-1 ${v.status?.toLowerCase() === 'draft' || v.status?.toLowerCase() === 'drafted' ? 'bg-gray-100 text-gray-600' : 'bg-[#F3D6DC] text-green-700'} text-[10px] font-bold rounded-full uppercase`}>
+                    <span className={`px-3 py-1 ${v.status?.toLowerCase() === 'draft' || v.status?.toLowerCase() === 'drafted' ? 'bg-gray-100 text-gray-600' : 'bg-gray-50 text-green-700'} text-[10px] font-bold rounded-full uppercase`}>
                       {v.status || 'Published'}
                     </span>
                   </div>

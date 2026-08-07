@@ -149,7 +149,7 @@ export default function EditEmail({ id }: EditEmailProps) {
                     <div className="flex gap-3 flex-wrap">
                         <button
                             onClick={handlePreview}
-                            className="flex items-center gap-2 px-5 py-2.5 bg-[#F3D6DC] border border-[#F3D6DC] rounded-xl text-sm font-medium text-[#374151]"
+                            className="flex items-center gap-2 px-5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-[#374151]"
                         >
                             <FiEye size={16} />
                             Preview Email
@@ -158,7 +158,7 @@ export default function EditEmail({ id }: EditEmailProps) {
 
                         <button
                             onClick={() => setShowSendTestMail(true)}
-                            className="flex items-center gap-2 px-5 py-2.5 bg-[#F3D6DC] border border-[#F3D6DC] rounded-xl text-sm font-medium text-[#374151]"
+                            className="flex items-center gap-2 px-5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-[#374151]"
                         >
                             <FiSend size={16} />
                             Send Test Email
@@ -166,7 +166,7 @@ export default function EditEmail({ id }: EditEmailProps) {
 
                         <button
                             onClick={() => setShowHistory(true)}
-                            className="flex items-center gap-2 px-5 py-2.5 bg-[#F3D6DC] border border-[#F3D6DC] rounded-xl text-sm font-medium text-[#374151]"
+                            className="flex items-center gap-2 px-5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-[#374151]"
                         >
                             <FiClock size={16} />
                             Version History
@@ -229,7 +229,7 @@ export default function EditEmail({ id }: EditEmailProps) {
                             </label>
 
                             {/* Toolbar */}
-                            <div className="flex items-center gap-4 bg-[#F3D6DC] rounded-t-xl px-5 py-3">
+                            <div className="flex items-center gap-4 bg-gray-50 rounded-t-xl px-5 py-3">
                                 <button onClick={() => editor.chain().focus().toggleBold().run()} className="text-[#374151]">
                                     <FiBold size={16} />
                                 </button>

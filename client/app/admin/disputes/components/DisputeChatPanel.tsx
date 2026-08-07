@@ -320,11 +320,11 @@ export default function DisputeChatPanel({ dispute }: ChatProps) {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#F3D6DC]">
+    <div className="flex flex-col h-full bg-gray-50">
 
       {/* ================= CONVERSATION VIEW ================= */}
 
-      <div className="px-4 py-3 border-b border-[#E5C8CE] bg-[#F3D6DC]">
+      <div className="px-4 py-3 border-b border-[#E5C8CE] bg-gray-50">
         <h3 className="text-sm font-semibold text-[#3D1126] mb-4 font-poppins flex items-center gap-2">
           <LuMessageSquare className="text-lg" />
           Conversation View
@@ -378,7 +378,7 @@ export default function DisputeChatPanel({ dispute }: ChatProps) {
       </div>
 
       {/* ================= PARTICIPANTS HEADER ================= */}
-      <div className="px-6 py-4 flex items-center border-b border-[#E5C8CE] bg-[#F3D6DC]/30 gap-4">
+      <div className="px-6 py-4 flex items-center border-b border-[#E5C8CE] bg-gray-50/30 gap-4">
         {/* Overlapping Avatars */}
         <div className="flex -space-x-4 rtl:space-x-reverse relative z-0">
           {!(dispute?.creator_role?.toLowerCase() === 'lender' || dispute?.lender?.chatId) ? (<><Avatar user={lender} /> <Avatar user={renter} /></>) : (<>{dispute?.creator_role?.toLowerCase() === 'renter' ? <Avatar user={renter} /> : <Avatar user={lender} />}</>)}
@@ -509,7 +509,7 @@ export default function DisputeChatPanel({ dispute }: ChatProps) {
 
       {/* ================= INPUT SECTION / READ-ONLY FOOTER ================= */}
       {activeView === 'history' || ['closed', 'rejected'].includes(dispute?.status?.toLowerCase()) ? (
-        <div className="px-3 py-3 border-t border-[#E5C8CE] bg-[#F3D6DC]/50 flex items-center justify-center gap-3 text-[#64748B]">
+        <div className="px-3 py-3 border-t border-[#E5C8CE] bg-gray-50/50 flex items-center justify-center gap-3 text-[#64748B]">
           <i className="ri-lock-line text-lg"></i>
           <p className="text-[15px] font-medium font-roboto">
             {dispute?.status?.toLowerCase() === 'closed'

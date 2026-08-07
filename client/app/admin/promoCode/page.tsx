@@ -102,7 +102,7 @@ export default function Page() {
                     </div>
                     <div className="flex gap-4">
                         <select
-                            className="border-[#F3D6DC] border rounded-lg px-3 py-2 font-roboto w-full md:w-40 bg-[#F3D6DC] focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-normal"
+                            className="border-gray-200 border rounded-lg px-3 py-2 font-roboto w-full md:w-40 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-normal"
                             value={filters.status}
                             onChange={(e) => setFilters({ status: e.target.value })}
                         >
@@ -113,7 +113,7 @@ export default function Page() {
                         </select>
 
                         <select
-                            className="border-[#F3D6DC] border rounded-lg px-3 py-2 font-roboto w-full md:w-40 bg-[#F3D6DC] focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-normal"
+                            className="border-gray-200 border rounded-lg px-3 py-2 font-roboto w-full md:w-40 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-normal"
                             value={filters.type}
                             onChange={(e) => setFilters({ type: e.target.value })}
                         >
@@ -131,9 +131,9 @@ export default function Page() {
                 </div>
 
                 {/* Table */}
-                <div className="bg-[#F3D6DC] rounded-xl shadow-sm overflow-hidden border border-[#F1F1F1]">
+                <div className="bg-gray-50 rounded-xl shadow-sm overflow-hidden border border-[#F1F1F1]">
                     <table className="w-full min-w-[900px] text-sm">
-                        <thead className="bg-[#F3D6DC] text-[#4B5563] font-medium text-left">
+                        <thead className="bg-gray-50 text-[#4B5563] font-medium text-left">
                             <tr>
                                 <th className="px-6 py-4">Code</th>
                                 <th className="px-6 py-4">Discount</th>

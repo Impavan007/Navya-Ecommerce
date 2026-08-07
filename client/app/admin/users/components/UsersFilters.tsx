@@ -14,8 +14,8 @@ interface UsersFiltersProps {
 export default function UsersFilters({ activeTab, onTabChange, counts }: UsersFiltersProps) {
   const tabs = [
     { id: 'all', label: 'All Users', count: counts.all },
-    { id: 'Renters', label: 'Renters', count: counts.Renters },
-    { id: 'lenders', label: 'Lenders', count: counts.lenders },
+    { id: 'Renters', label: 'Buyers', count: counts.Renters },
+    { id: 'lenders', label: 'Sellers', count: counts.lenders },
     { id: 'suspended', label: 'Suspended', count: counts.suspended },
   ];
 
@@ -27,7 +27,7 @@ export default function UsersFilters({ activeTab, onTabChange, counts }: UsersFi
             key={tab.id}
             onClick={() => onTabChange(tab.id)}
             className={`px-4 py-2 text-sm font-medium transition-colors whitespace-nowrap font-roboto ${activeTab === tab.id
-                ? 'bg-[#F3D6DC] text-[#4B5563] border border-[#F3D6DC]'
+                ? 'bg-gray-50 text-[#4B5563] border border-gray-200'
                 : 'text-gray-600 hover:text-gray-900 hover:bg-[#FAF6F3] border border-transparent'
               }`}
           >

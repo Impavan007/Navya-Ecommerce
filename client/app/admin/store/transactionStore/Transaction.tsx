@@ -272,12 +272,12 @@ export const useTransactionStore = create<TransactionStore>((set, get) => ({
       const transformedTransactions: Transaction[] = (responseData.transactions || []).map((txn: any) => {
         // Get user details directly from the transaction object
         const renter = txn.renter || {
-          name: 'Unknown Renter',
+          name: 'Unknown Buyer',
           avatar: 'https://readdy.ai/api/search-image?query=young%20professional%20woman%20portrait%20headshot%20clean%20background%20business%20casual%20confident%20smile%20modern%20lighting&width=40&height=40&seq=default-borrower&orientation=squarish'
         };
 
         const lender = txn.lender || {
-          name: 'Unknown Lender',
+          name: 'Unknown Seller',
           avatar: 'https://readdy.ai/api/search-image?query=elegant%20woman%20portrait%20headshot%20clean%20background%20professional%20attire%20warm%20smile%20modern%20lighting&width=40&height=40&seq=default-lender&orientation=squarish'
         };
 

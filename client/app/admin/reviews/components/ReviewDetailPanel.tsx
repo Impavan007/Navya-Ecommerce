@@ -54,7 +54,7 @@ export default function ReviewDetailPanel({ review, onClose }: ReviewDetailPanel
   const getStatusBadge = (status: string) => {
     const styles = {
       pending: 'bg-gray-100 text-gray-700 border border-gray-300',
-      approved: 'bg-[#F3D6DC] text-green-700 border border-green-300',
+      approved: 'bg-gray-50 text-green-700 border border-green-300',
       removed: 'bg-red-100 text-red-700 border border-red-300',
       flagged: 'bg-yellow-100 text-yellow-700 border border-yellow-300'
     };
@@ -107,7 +107,7 @@ export default function ReviewDetailPanel({ review, onClose }: ReviewDetailPanel
 
       <div className="fixed right-0 inset-y-0 w-full max-w-xl bg-white shadow-2xl z-[201] flex flex-col transform transition-transform duration-300 animate-slide-in-right overflow-hidden font-poppins text-[#3D1126]">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-[#F3D6DC] flex-shrink-0">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50 flex-shrink-0">
           <div>
             <h2 className="text-xl font-bold text-gray-900 font-canela uppercase tracking-tight">Review Details</h2>
             <div className="flex items-center gap-3 mt-1">
@@ -122,7 +122,7 @@ export default function ReviewDetailPanel({ review, onClose }: ReviewDetailPanel
         </div>
 
         {/* Tabs */}
-        {/* <div className="flex border-b border-gray-200 flex-shrink-0 bg-[#F3D6DC] sticky top-0 z-10">
+        {/* <div className="flex border-b border-gray-200 flex-shrink-0 bg-gray-50 sticky top-0 z-10">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -139,7 +139,7 @@ export default function ReviewDetailPanel({ review, onClose }: ReviewDetailPanel
         </div> */}
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto bg-[#F3D6DC] p-6 space-y-6">
+        <div className="flex-1 overflow-y-auto bg-gray-50 p-6 space-y-6">
           {activeTab === 'overview' && (
             <div className="space-y-6">
               {/* Rating Card */}
@@ -165,7 +165,7 @@ export default function ReviewDetailPanel({ review, onClose }: ReviewDetailPanel
                 <div className="bg-white rounded border border-gray-200 shadow-sm p-4">
 
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded bg-[#FDF2F4] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded bg-gray-50 flex items-center justify-center">
                       <i className="ri-shopping-bag-line text-[#904C5A]"></i>
                     </div>
                     <div>
@@ -225,7 +225,7 @@ export default function ReviewDetailPanel({ review, onClose }: ReviewDetailPanel
                     <h3 className="text-sm font-medium text-gray-900 font-poppins">admin Notes</h3>
                     <button onClick={() => setShowNotesModal(true)} className="text-xs font-bold text-gray-600 hover:underline px-2 py-1">EDIT</button>
                   </div>
-                  <div className="p-4 bg-[#FDF2F4] border border-[#F3D6DC] rounded-lg">
+                  <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
                     <p className="text-sm text-[#904C5A] font-medium leading-relaxed italic">"{review.adminNotes}"</p>
                   </div>
                 </div>

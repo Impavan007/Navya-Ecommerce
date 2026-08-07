@@ -64,7 +64,53 @@ export default function ReusableTable<T>({
 
   return (
     <div className={`bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm transition-opacity duration-300 ${loading ? 'opacity-60' : 'opacity-100'}`}>
-      <div className="overflow-x-auto custom-scrollbar pb-2">
+      
+      {/* Mobile Card View */}
+      <div className="block md:hidden p-4 space-y-4 bg-gray-50">
+        {data.map((item, rowIdx) => {
+          const id = String(item[idKey]);
+          const isSelected = selectedIds.includes(id);
+          
+          return (
+            <div 
+              key={id || rowIdx} 
+              className={`bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden ${onRowClick ? 'cursor-pointer transition-shadow hover:shadow-md' : ''}`}
+              onClick={() => onRowClick && onRowClick(item)}
+            >
+              {selectable && (
+                <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 flex items-center justify-between" onClick={(e) => e.stopPropagation()}>
+                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider font-canela">Select Item</span>
+                  {(isRowSelectable ? isRowSelectable(item) : true) ? (
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => onSelectRow && onSelectRow(id)}
+                      className="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
+                    />
+                  ) : (
+                    <div className="w-4 h-4" />
+                  )}
+                </div>
+              )}
+              <div className="p-4 space-y-3">
+                {columns.map((column, colIdx) => (
+                  <div key={colIdx} className="flex justify-between items-center text-sm font-roboto border-b border-gray-100 pb-2 last:border-0 last:pb-0">
+                    <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider font-canela">{column.header}</span>
+                    <div className="text-gray-900 flex-1 flex justify-end text-right pl-4">
+                      {column.render
+                        ? column.render((item as any)[column.key], item)
+                        : String((item as any)[column.key])}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Desktop Table View */}
+      <div className="hidden md:block overflow-x-auto custom-scrollbar pb-2">
         <table className="w-full divide-y divide-gray-200">
           <thead className={headerClassName}>
             <tr>

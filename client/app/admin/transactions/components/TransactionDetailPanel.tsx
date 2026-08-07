@@ -84,10 +84,10 @@ export default function TransactionDetailPanel({
 
   const getStatusBadge = (status: string) => {
     const styles = {
-      success: 'bg-[#F3D6DC] text-green-700 border border-green-300',
+      success: 'bg-gray-50 text-green-700 border border-green-300',
       pending: 'bg-blue-100 text-blue-700 border border-blue-300',
       failed: 'bg-red-100 text-red-700 border border-red-300',
-      completed: 'bg-[#F3D6DC] text-green-700 border border-green-300',
+      completed: 'bg-gray-50 text-green-700 border border-green-300',
       cancelled: 'bg-red-100 text-red-700 border border-red-300'
     };
 
@@ -102,7 +102,7 @@ export default function TransactionDetailPanel({
     const styles = {
       'payment': 'bg-gray-100 text-gray-700 border border-gray-300',
       'deposit-hold': 'bg-gray-100 text-gray-700 border border-gray-300',
-      'deposit-release': 'bg-[#F3D6DC] text-green-700 border border-green-300',
+      'deposit-release': 'bg-gray-50 text-green-700 border border-green-300',
       'refund': 'bg-orange-100 text-orange-700 border border-orange-300',
       'late-fee': 'bg-gray-100 text-gray-700 border border-gray-300',
       'platform-fee': 'bg-purple-100 text-purple-700 border border-purple-300',

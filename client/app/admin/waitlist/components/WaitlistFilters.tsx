@@ -46,7 +46,7 @@ export default function WaitlistFilters({
               onClick={() => handleTabClick(tab.id)}
               className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap transition-colors font-roboto ${
                 activeTab === tab.id
-                  ? "border-[#F3D6DC] text-gray-900"
+                  ? "border-gray-200 text-gray-900"
                   : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
@@ -54,7 +54,7 @@ export default function WaitlistFilters({
               <span
                 className={`ml-2 py-0.5 px-2 rounded-full text-xs font-roboto ${
                   activeTab === tab.id
-                    ? "bg-[#F3D6DC] text-[#4B5563]"
+                    ? "bg-gray-50 text-[#4B5563]"
                     : "bg-gray-100 text-gray-600"
                 }`}
               >
@@ -72,7 +72,7 @@ export default function WaitlistFilters({
               Sort by:
             </label>
             <select
-              className="px-3 py-3 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-[#F3D6DC] focus:border-transparent pr-8 font-roboto bg-[#F3D6DC] text-black"
+              className="px-3 py-3 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-gray-200 focus:border-transparent pr-8 font-roboto bg-gray-50 text-black"
               value={filters.sort || "newest"}
               onChange={(e) =>
                 onFiltersChange({ ...filters, sort: e.target.value })
@@ -94,7 +94,7 @@ export default function WaitlistFilters({
               onChange={(e) =>
                 onFiltersChange({ ...filters, dateRange: e.target.value })
               }
-              className="px-3 py-3 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-[#F3D6DC] focus:border-transparent pr-8 font-roboto bg-[#F3D6DC] text-black"
+              className="px-3 py-3 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-gray-200 focus:border-transparent pr-8 font-roboto bg-gray-50 text-black"
             >
               <option value="">All time</option>
               <option value="today">Today</option>

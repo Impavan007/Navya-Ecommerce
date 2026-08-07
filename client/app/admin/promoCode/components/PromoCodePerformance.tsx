@@ -68,21 +68,21 @@ export default function PromoCodePerformance({
 
                         {/* Info Cards */}
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                            <div className="bg-[#F3D6DC] p-4 rounded-lg border border-[#E9C4CB]">
+                            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                                 <p className="text-xs text-gray-600">Discount Type</p>
                                 <p className="font-semibold mt-1 text-gray-800">
                                     {promo.discount}
                                 </p>
                             </div>
 
-                            <div className="bg-[#F3D6DC] p-4 rounded-lg border border-[#E9C4CB]">
+                            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                                 <p className="text-xs text-gray-600">Created Date</p>
                                 <p className="font-semibold mt-1 text-gray-800">
                                     {performance.createdDate}
                                 </p>
                             </div>
 
-                            <div className="bg-[#F3D6DC] p-4 rounded-lg border border-[#E9C4CB]">
+                            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                                 <p className="text-xs text-gray-600">Last Used</p>
                                 <p className="font-semibold mt-1 text-gray-800">
                                     {performance.lastUsed}
@@ -116,7 +116,7 @@ export default function PromoCodePerformance({
 
                             <div className="rounded-lg overflow-x-auto border border-[#E5E7EB]">
                                 <table className="w-full min-w-[500px] text-sm">
-                                    <thead className="text-left text-gray-700 bg-[#F3D6DC]">
+                                    <thead className="text-left text-gray-700 bg-gray-50">
                                         <tr>
                                             <th className="px-4 py-3 font-medium">Date</th>
                                             <th className="px-4 py-3 font-medium">Users</th>

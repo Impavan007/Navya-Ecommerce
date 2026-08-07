@@ -26,10 +26,10 @@ export default function OrdersHeader({
 
   return (
     <div className="bg-white border-b border-gray-200 px-8 py-6 font-poppins">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <h1 className="text-2xl font-bold text-[#3D1126] font-canela">Orders Management</h1>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4">
           {/* Search Input */}
           <div className="relative flex items-center">
             <div className="relative">
@@ -87,7 +87,7 @@ export default function OrdersHeader({
               <select
                 value={filters.status}
                 onChange={(e) => onFiltersChange({ ...filters, status: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent bg-[#F3D6DC] text-black pr-8 font-playfair"
+                className="w-full px-3 py-2 border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent bg-gray-50 text-black pr-8 font-playfair"
               >
                 <option value="all">All Statuses</option>
                 <option value="pending">Pending</option>
@@ -107,7 +107,7 @@ export default function OrdersHeader({
               <select
                 value={filters.dateRange}
                 onChange={(e) => onFiltersChange({ ...filters, dateRange: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent bg-[#F3D6DC] text-black pr-8 font-playfair"
+                className="w-full px-3 py-2 border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent bg-gray-50 text-black pr-8 font-playfair"
               >
                 <option value="all">All Time</option>
                 <option value="today">Today</option>

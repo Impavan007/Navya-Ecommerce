@@ -146,7 +146,7 @@ export default function SecuritySettings() {
               </button>
               <button
                 onClick={handlePasswordChange}
-                className="px-4 py-2 text-sm font-medium text-black bg-[#F3D6DC]  hover:bg-[#ebbdc5] transition-colors cursor-pointer whitespace-nowrap"
+                className="px-4 py-2 text-sm font-medium text-black bg-gray-50  hover:bg-[#ebbdc5] transition-colors cursor-pointer whitespace-nowrap"
               >
                 Update Password
               </button>
@@ -164,7 +164,7 @@ export default function SecuritySettings() {
           </div>
           <div className={`flex items-center space-x-2 px-3 py-1 rounded-full text-sm font-medium ${
             twoFactorEnabled 
-              ? 'bg-[#F3D6DC] text-green-800' 
+              ? 'bg-gray-50 text-green-800' 
               : 'bg-gray-100 text-gray-600'
           }`}>
             <div className={`w-2 h-2 rounded-full ${twoFactorEnabled ? 'bg-green-500' : 'bg-gray-400'}`}></div>
@@ -175,7 +175,7 @@ export default function SecuritySettings() {
         <div className="flex items-center justify-between p-4 bg-gray-50 ">
           <div className="flex items-center space-x-4">
             <div className={`w-12 h-12  flex items-center justify-center ${
-              twoFactorEnabled ? 'bg-[#F3D6DC]' : 'bg-gray-100'
+              twoFactorEnabled ? 'bg-gray-50' : 'bg-gray-100'
             }`}>
               <i className={`ri-shield-check-line w-6 h-6 flex items-center justify-center ${
                 twoFactorEnabled ? 'text-green-600' : 'text-gray-600'
@@ -238,7 +238,7 @@ export default function SecuritySettings() {
             <div key={session.id} className="flex items-center justify-between p-4 border border-gray-200 ">
               <div className="flex items-center space-x-4">
                 <div className={`w-10 h-10  flex items-center justify-center ${
-                  session.current ? 'bg-[#F3D6DC]' : 'bg-gray-100'
+                  session.current ? 'bg-gray-50' : 'bg-gray-100'
                 }`}>
                   <i className={`ri-computer-line w-5 h-5 flex items-center justify-center ${
                     session.current ? 'text-green-600' : 'text-gray-600'
@@ -248,7 +248,7 @@ export default function SecuritySettings() {
                   <div className="flex items-center space-x-2">
                     <p className="font-medium text-gray-900">{session.device}</p>
                     {session.current && (
-                      <span className="text-xs bg-[#F3D6DC] text-green-800 px-2 py-1 rounded-full">Current</span>
+                      <span className="text-xs bg-gray-50 text-green-800 px-2 py-1 rounded-full">Current</span>
                     )}
                   </div>
                   <p className="text-sm text-gray-600">{session.location} • {session.lastActive}</p>

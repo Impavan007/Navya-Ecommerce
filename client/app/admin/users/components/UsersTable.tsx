@@ -159,14 +159,23 @@ export default function UsersTable({
   };
 
   const getRoleBadge = (role: string) => {
+    let displayRole = role;
+    if (role === 'Renter' || role === 'Borrower') displayRole = 'Buyer';
+    if (role === 'Lender') displayRole = 'Seller';
+
     const styles = {
       'Renter': 'bg-blue-50 text-blue-700 border-blue-200',
       'Lender': 'bg-gray-100 text-gray-700 border-gray-300',
-      'Borrower': 'bg-blue-50 text-blue-700 border-blue-200'
+      'Borrower': 'bg-blue-50 text-blue-700 border-blue-200',
+      'admin': 'bg-purple-50 text-purple-700 border-purple-200'
     };
+    
+    // Add default fallback if role isn't perfectly matched
+    const badgeStyle = styles[role as keyof typeof styles] || 'bg-gray-50 text-gray-700 border-gray-200';
+
     return (
-      <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border whitespace-nowrap ${styles[role as keyof typeof styles] || styles['Renter']} font-roboto`}>
-        {role}
+      <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border whitespace-nowrap ${badgeStyle} font-roboto`}>
+        {displayRole}
       </span>
     );
   };

@@ -88,7 +88,7 @@ export default function DisputeDetailPanel({ dispute, onClose, onResolve, loadin
     const styles = {
       open: 'bg-gray-100 text-gray-800 border border-gray-300',
       progress: 'bg-blue-100 text-blue-800 border border-blue-300',
-      resolved: 'bg-[#F3D6DC] text-green-800 border border-green-300',
+      resolved: 'bg-gray-50 text-green-800 border border-green-300',
       escalated: 'bg-red-100 text-red-800 border border-red-300',
       rejected: 'bg-yellow-100 text-yellow-800 border border-yellow-300',
       closed: 'bg-purple-100 text-purple-800 border border-purple-300'
@@ -154,7 +154,7 @@ export default function DisputeDetailPanel({ dispute, onClose, onResolve, loadin
       {/* Side Panel */}
       <div className="fixed right-0 inset-y-0 w-full max-w-xl bg-white shadow-2xl z-[201] flex flex-col transform transition-transform duration-300 animate-slide-in-right overflow-hidden font-poppins">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-[#F3D6DC] flex-shrink-0">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50 flex-shrink-0">
           <div>
             <h2 className="text-xl font-bold text-gray-900 font-canela">{dispute?.support_slug_id}</h2>
             {dispute?.orderId && <p className="text-sm text-gray-500 font-poppins opacity-75">Order: {dispute.orderNumber}</p>}
@@ -168,7 +168,7 @@ export default function DisputeDetailPanel({ dispute, onClose, onResolve, loadin
         </div>
 
         {/* TABS */}
-        <div className="flex border-b border-gray-200 flex-shrink-0 bg-[#F3D6DC] sticky top-0 z-10">
+        <div className="flex border-b border-gray-200 flex-shrink-0 bg-gray-50 sticky top-0 z-10">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -185,7 +185,7 @@ export default function DisputeDetailPanel({ dispute, onClose, onResolve, loadin
         </div>
 
         {/* SCROLLABLE CONTENT */}
-        <div className="flex-1 overflow-y-auto bg-[#F3D6DC] relative">
+        <div className="flex-1 overflow-y-auto bg-gray-50 relative">
           {loading ? (
             <div className="absolute inset-0 flex items-center justify-center bg-white/50">
               <CommonLoader size="lg" />

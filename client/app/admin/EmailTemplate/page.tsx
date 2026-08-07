@@ -67,7 +67,7 @@ export default function EmailTemplatePage() {
         </div>
 
         {/* Table Container */}
-        <div className="mt-8  border border-[#F1F1F1] bg-[#F3D6DC] overflow-hidden">
+        <div className="mt-8  border border-[#F1F1F1] bg-gray-50 overflow-hidden">
           {/* Header */}
           <div className="hidden md:grid grid-cols-5 px-8 py-4 text-[13px] font-semibold text-[#6B7280] bg-[#E9C8CE]">
             <div className="flex items-center">Template Name</div>

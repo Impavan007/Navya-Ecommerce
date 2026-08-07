@@ -46,19 +46,6 @@ export default function AppSidebar({ collapsed, onToggleCollapse, isMobileOpen, 
             { name: 'Listings', href: '/admin/listings', icon: <Icons.ListingAlt /> },
             { name: 'Orders', href: '/admin/orders', icon: <Icons.OrderAlt /> }
           ]
-        },
-        {
-          title: 'Finance',
-          items: [
-            { name: 'Transactions', href: '/admin/transactions', icon: <Icons.TransactionGBP /> },
-            { name: 'Payouts', href: '/admin/payouts', icon: <Icons.TransactionEUR /> }
-          ]
-        },
-        {
-          title: 'System',
-          items: [
-            { name: 'Settings', href: '/admin/settings', icon: <Icons.SettingsAlt /> }
-          ]
         }
       ];
     } else {

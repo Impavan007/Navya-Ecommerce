@@ -107,7 +107,7 @@ export default function FAQ() {
                 <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
                     <div>
                         <h1 className="text-2xl font-bold text-[#111827] flex items-center gap-3 font-canela">
-                            <div className="p-2 bg-[#F3D6DC] rounded-lg">
+                            <div className="p-2 bg-gray-50 rounded-lg">
                                 <RiQuestionAnswerLine className="text-xl text-[#3D1126]" />
                             </div>
                             FAQ Management
@@ -131,7 +131,7 @@ export default function FAQ() {
                 </div>
 
                 {/* SEARCH */}
-                <div className="bg-[#F3D6DC] rounded-xl p-4 flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between">
+                <div className="bg-gray-50 rounded-xl p-4 flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between">
                     <div className="relative w-full lg:max-w-lg flex">
                         <div className="relative flex-1">
                             <RiSearchLine className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />

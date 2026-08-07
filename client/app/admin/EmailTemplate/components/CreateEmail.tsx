@@ -183,7 +183,7 @@ export default function CreateEmail() {
                             <label className="block text-sm font-medium text-[#374151] mb-3">
                                 Email Body *
                             </label>
-                            <div className="flex items-center gap-4 bg-[#F3D6DC] rounded-t-xl px-5 py-3">
+                            <div className="flex items-center gap-4 bg-gray-50 rounded-t-xl px-5 py-3">
                                 <button onClick={() => editor.chain().focus().toggleBold().run()} className="text-[#374151]">
                                     <FiBold size={16} />
                                 </button>

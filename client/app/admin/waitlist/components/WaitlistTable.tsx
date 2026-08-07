@@ -161,7 +161,7 @@ export default function WaitlistTable({
   ];
 
   return (
-    <div className="bg-white  border border-[#F3D6DC] rounded-lg overflow-hidden">
+    <div className="bg-white  border border-gray-200 rounded-lg overflow-hidden">
       <ReusableTable
         columns={columns}
         data={users}
@@ -186,7 +186,7 @@ export default function WaitlistTable({
           <textarea
             value={rejectReason}
             onChange={(e) => setRejectReason(e.target.value)}
-            className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-700 focus:ring-2 focus:ring-[#F3D6DC] outline-none font-roboto"
+            className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-700 focus:ring-2 focus:ring-gray-200 outline-none font-roboto"
             rows={4}
             placeholder="Enter reason for rejection..."
           />
