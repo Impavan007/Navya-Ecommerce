@@ -29,7 +29,7 @@ export class ProductsApiService {
     is_featured?: boolean;
     available?: boolean;
     sizes?: string;
-    occasion?: string;
+    fabric?: string;
     q?: string;
     min_price?: number;
     max_price?: number;
@@ -48,7 +48,7 @@ export class ProductsApiService {
         is_featured: params.is_featured?.toString(),
         available: params.available?.toString(),
         sizes: params.sizes,
-        occasion: params.occasion,
+        fabric: params.fabric,
         q: params.q,
         min_price: params.min_price?.toString(),
         max_price: params.max_price?.toString(),
@@ -88,7 +88,7 @@ export class ProductsApiService {
    */
   async searchProducts(
     query?: string,
-    params?: { page?: number; limit?: number; occasion?: string }
+    params?: { page?: number; limit?: number; fabric?: string }
   ): Promise<ApiResponse<ProductsResponse>> {
     const stringParams = params
       ? ((Object.fromEntries(
@@ -103,8 +103,8 @@ export class ProductsApiService {
       ...(stringParams || {}),
     };
 
-    if (params?.occasion) {
-      requestParams.occasion = params.occasion;
+    if (params?.fabric) {
+      requestParams.fabric = params.fabric;
     } else if (query !== undefined) {
       requestParams.q = query;
     }

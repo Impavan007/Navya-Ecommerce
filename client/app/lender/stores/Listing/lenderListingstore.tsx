@@ -23,7 +23,7 @@ interface ListingFormData {
   category: string;
   brand: string;
   size: string[];
-  occasion: string;
+  fabric: string;
   measurements: string;
   rentalPrice: string;
   cleaningPrice: string;
@@ -60,7 +60,7 @@ export const createInitialFormData = (): ListingFormData => ({
   category: '',
   brand: '',
   size: [],
-  occasion: '',
+  fabric: '',
   measurements: '',
   rentalPrice: '',
   cleaningPrice: '',
@@ -113,7 +113,7 @@ export const useLenderStore = create<LenderState>((set, get) => ({
           name: formData.title,
           category: formData.category,
           sub_category: formData.subcategory,
-          occasion: formData.occasion,
+          fabric: formData.fabric,
           size: formData.size,
           brand: formData.brand,
           quantity: formData.quantity,
@@ -211,7 +211,7 @@ export const useLenderStore = create<LenderState>((set, get) => ({
       data.append('name', formData.title);
       data.append('category', formData.category);
       data.append('sub_category', formData.subcategory);
-      data.append('occasion', formData.occasion);
+      data.append('fabric', formData.fabric);
       data.append('size', JSON.stringify(formData.size));
       data.append('brand', formData.brand);
       data.append('quantity', String(formData.quantity));

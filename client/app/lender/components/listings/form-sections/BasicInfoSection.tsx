@@ -30,7 +30,7 @@ export default function BasicInfoSection({ formData, setFormData, mode }: BasicI
     '4XL (UK/IN 20)',
     '5XL (UK/IN 22)'
   ];
-  const occasionOptions = [
+  const fabricOptions = [
     { label: "Birthday / Party", value: "Birthday / Party" },
     { label: "Wedding Guest", value: "Wedding Guest" },
     { label: "Workwear", value: "Workwear" },
@@ -193,18 +193,18 @@ export default function BasicInfoSection({ formData, setFormData, mode }: BasicI
           </select>
         </div>
 
-        {/* Occasion */}
+        {/* Fabric */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2 font-poppins">
-            Occasion
+            Fabric
           </label>
           <select
-            value={formData.occasion || ""}
-            onChange={(e) => handleInputChange("occasion", e.target.value)}
+            value={formData.fabric || ""}
+            onChange={(e) => handleInputChange("fabric", e.target.value)}
             className="w-full px-3 py-2 border-b bg-[#FAF6F3] border-gray-300 focus:outline-none focus:ring-0 text-sm font-poppins"
           >
-            <option value="">Select Occasion</option>
-            {occasionOptions.map((opt) => (
+            <option value="">Select Fabric</option>
+            {fabricOptions.map((opt) => (
               <option key={opt.value} value={opt.value}>
                 {opt.label}
               </option>
@@ -359,7 +359,7 @@ export default function BasicInfoSection({ formData, setFormData, mode }: BasicI
             onChange={(e) => handleInputChange('description', e.target.value)}
             rows={4}
             className="w-full px-3 py-2 border border-gray-300 focus:ring-2 focus:ring-gray-800 focus:border-transparent text-sm font-poppins bg-transparent"
-            placeholder="Describe the item's style, fabric, occasion, and any special features..."
+            placeholder="Describe the item's style, fabric, and any special features..."
             maxLength={500}
           />
           <div className="flex justify-between items-center mt-1">

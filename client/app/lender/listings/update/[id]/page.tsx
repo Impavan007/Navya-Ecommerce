@@ -96,7 +96,7 @@ const mapListingToFormData = (data: any) => {
         : data.category?._id || '',
     brand: data.brand || '',
     size: Array.isArray(data.size) ? data.size : [],
-    occasion: data.occasion || data.occasion || '',
+    fabric: data.fabric || data.fabric || '',
     measurements: data.measurements || '',
     rentalPrice: numberToString(
       data.rentalPrice ?? data.rental_price_per_day ?? data.price
