@@ -13,6 +13,7 @@ export default function CheckoutPage() {
     const { checkoutData, isLoading } = useCheckoutStore();
     const [promoCode, setPromoCode] = useState("");
     const [isProcessing, setIsProcessing] = useState(false);
+    const [orderPlaced, setOrderPlaced] = useState(false);
 
     const handlePayment = async () => {
         if (!checkoutData) return;
@@ -35,9 +36,10 @@ export default function CheckoutPage() {
 
             const response = await axiosClient.post("/renter/create-order", payload);
             if (response.data.success) {
+                setOrderPlaced(true);
                 toast.success("Order Placed Successfully!");
                 useCheckoutStore.getState().clearCheckoutData();
-                router.push("/bookings");
+                router.push("/");
             } else {
                 toast.error(response.data.message || "Failed to create order");
             }
@@ -93,10 +95,10 @@ export default function CheckoutPage() {
     };
 
     useEffect(() => {
-        if (!checkoutData && !isLoading) {
+        if (!checkoutData && !isLoading && !orderPlaced) {
             router.push("/cart");
         }
-    }, [checkoutData, isLoading, router]);
+    }, [checkoutData, isLoading, router, orderPlaced]);
 
     if (!checkoutData) {
         return (

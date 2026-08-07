@@ -16,25 +16,9 @@ import { HowItWorksData } from "./types/api";
 
 
 export default function Home() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <HomeContent />
-    </Suspense>
-  );
-}
-
-function HomeContent() {
-  const [howItWorksData, setHowItWorksData] = useState<HowItWorksData | null>(null);
   const [activeToggle, setActiveToggle] = useState<"renter" | "lender">("renter");
+  const [howItWorksData, setHowItWorksData] = useState<HowItWorksData | null>(null);
   const [loading, setLoading] = useState(true);
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const tab = searchParams.get('tab');
-    if (tab === 'lender') {
-      setActiveToggle('lender');
-    }
-  }, [searchParams]);
 
   useEffect(() => {
     const fetchHowItWorks = async () => {
@@ -56,6 +40,9 @@ function HomeContent() {
 
   return (
     <>
+      <Suspense fallback={null}>
+        <TabSync setActiveToggle={setActiveToggle} />
+      </Suspense>
       <HeroSection />
       <FeaturedProducts />
       {/* <ExploreByCategory /> */}
@@ -70,4 +57,15 @@ function HomeContent() {
       <StartRentingToday />
     </>
   );
+}
+
+function TabSync({ setActiveToggle }: { setActiveToggle: (val: "renter" | "lender") => void }) {
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab === 'lender') {
+      setActiveToggle('lender');
+    }
+  }, [searchParams, setActiveToggle]);
+  return null;
 }

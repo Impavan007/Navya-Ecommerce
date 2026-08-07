@@ -164,6 +164,7 @@ export default function CartPage() {
     }
     if (!selectedAddressId) {
       toast.error("Please select a delivery address");
+      setIsChangeAddressOpen(true);
       return;
     }
 
@@ -533,7 +534,7 @@ export default function CartPage() {
                     className="w-[134px] h-[56px] bg-[#1A1A1A] rounded-[8px] flex items-center justify-center p-[16px_20px] gap-[10px] cursor-pointer hover:bg-[#1a1a1a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     textClassName="font-poppins font-medium text-[16px] leading-[24px] capitalize text-white"
                     onClick={handlePlaceOrder}
-                    disabled={isCreatingOrder || cartItems.length === 0 || !selectedAddressId}
+                    disabled={isCreatingOrder || cartItems.length === 0}
                   />
                 </div>
               </div>
@@ -546,7 +547,7 @@ export default function CartPage() {
                     className="w-[134px] h-[56px] bg-[#1A1A1A] rounded-[8px] flex items-center justify-center p-[16px_20px] gap-[10px] cursor-pointer hover:bg-[#1a1a1a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     textClassName="font-poppins font-medium text-[16px] leading-[24px] capitalize text-white"
                     onClick={handlePlaceOrder}
-                    disabled={isCreatingOrder || cartItems.length === 0 || !selectedAddressId}
+                    disabled={isCreatingOrder || cartItems.length === 0}
                   />
                 </div>
               </div>
