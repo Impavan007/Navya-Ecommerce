@@ -47,6 +47,7 @@ function Waveform({ activeState }: { activeState: "idle" | "listening" | "thinki
 function ProductReferenceCard({ productId }: { productId: string }) {
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -55,6 +56,7 @@ function ProductReferenceCard({ productId }: { productId: string }) {
         const response = await productsApi.getProductById(productId);
         if (active && response.success && response.data) {
           setProduct(response.data);
+          setImageError(false);
         }
       } catch (err) {
         console.error("Failed to load product details in chat card:", err);
@@ -83,8 +85,9 @@ function ProductReferenceCard({ productId }: { productId: string }) {
 
   if (!product) return null;
 
-  const initialImageSrc = product.cover_image || product.images?.[0] || "/assets/girl.jpg";
-  const [currentImageSrc, setCurrentImageSrc] = useState(initialImageSrc);
+  const currentImageSrc = imageError 
+    ? "/Images/premium_b2b_textiles.png" 
+    : (product.cover_image || product.images?.[0] || "/assets/girl.jpg");
 
   const formattedPrice = typeof product.price === 'number' 
     ? `$${product.price}` 
@@ -103,7 +106,7 @@ function ProductReferenceCard({ productId }: { productId: string }) {
             fill
             className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
             unoptimized
-            onError={() => setCurrentImageSrc("/Images/premium_b2b_textiles.png")}
+            onError={() => setImageError(true)}
           />
         </div>
         <div className="flex-1 min-w-0 text-left">
@@ -146,7 +149,7 @@ export default function AIStylistChat() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeMode, setActiveMode] = useState<"chat" | "voice">("chat");
-  const [currentFlow, setCurrentFlow] = useState<"menu" | "styling" | "tracking" | "fabric">("menu");
+  const [currentFlow, setCurrentFlow] = useState<"menu" | "sourcing" | "tracking" | "fabric">("menu");
   const [orders, setOrders] = useState<any[]>([]);
   const [loadingOrders, setLoadingOrders] = useState(false);
 
@@ -166,8 +169,9 @@ export default function AIStylistChat() {
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
-  const handleMenuOption = async (option: "track" | "fabric" | "styling" | "return" | "support") => {
+  const handleMenuOption = async (option: "track" | "fabric" | "sourcing" | "return" | "support") => {
     if (option === "track") {
       setMessages(prev => [...prev, { sender: "user", text: "Track my order" }]);
       if (!isAuthenticated) {
@@ -224,13 +228,13 @@ export default function AIStylistChat() {
         text: "We offer garments in a variety of exquisite fabrics. Please select a fabric below to view all available products:"
       }]);
       setCurrentFlow("fabric");
-    } else if (option === "styling") {
-      setMessages(prev => [...prev, { sender: "user", text: "Styling for occasion" }]);
+    } else if (option === "sourcing") {
+      setMessages(prev => [...prev, { sender: "user", text: "Fabric Sourcing" }]);
       setMessages(prev => [...prev, {
         sender: "ai",
-        text: "I've activated your AI Personal Stylist. Tell me what occasion or look you're planning, and I will recommend some designer fashion items for you!"
+        text: "I've activated your AI Fabric Sourcing Assistant. Tell me what type of textile project or garment you're planning, and I will recommend the perfect fabrics for you!"
       }]);
-      setCurrentFlow("styling");
+      setCurrentFlow("sourcing");
     } else if (option === "return") {
       setMessages(prev => [...prev, { sender: "user", text: "What is your return policy?" }]);
       setMessages(prev => [...prev, {
@@ -415,6 +419,8 @@ export default function AIStylistChat() {
   };
 
   const queueSentenceForPlayback = (sentence: string) => {
+    if (activeMode !== "voice") return;
+    
     audioQueueRef.current.push(sentence);
     if (!isPlayingRef.current) {
       playNextSentence();
@@ -459,8 +465,9 @@ export default function AIStylistChat() {
           try {
             const parsed = JSON.parse(dataStr);
             if (parsed.text) {
-              accumulatedReply += parsed.text;
-              sentenceBuffer += parsed.text;
+              const cleanedText = parsed.text.replace(/[\*]/g, '');
+              accumulatedReply += cleanedText;
+              sentenceBuffer += cleanedText;
 
               // Render text in UI real-time (for chat mode history)
               setMessages((prev) => {
@@ -549,10 +556,15 @@ export default function AIStylistChat() {
     setVoiceSuggestions([]); // Clear recommendations for the new search
     setVoiceState("thinking");
     setIsLoading(true);
-    setCurrentFlow("styling");
+    setCurrentFlow("sourcing");
 
     const userMsg: StylistChatMessage = { sender: "user", text: transcript };
     setMessages((prev) => [...prev, userMsg, { sender: "ai", text: "" }]);
+
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    abortControllerRef.current = new AbortController();
 
     try {
       const response = await fetch(`${API_CONFIG.baseURL}${ENDPOINTS.AI.STYLIST_CHAT}`, {
@@ -560,6 +572,7 @@ export default function AIStylistChat() {
         headers: {
           "Content-Type": "application/json"
         },
+        signal: abortControllerRef.current.signal,
         body: JSON.stringify({
           message: transcript,
           chatHistory: messages,
@@ -594,7 +607,12 @@ export default function AIStylistChat() {
     setMessages((prev) => [...prev, userMsg, { sender: "ai", text: "" }]);
     setInputValue("");
     setIsLoading(true);
-    setCurrentFlow("styling");
+    setCurrentFlow("sourcing");
+
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    abortControllerRef.current = new AbortController();
 
     try {
       const response = await fetch(`${API_CONFIG.baseURL}${ENDPOINTS.AI.STYLIST_CHAT}`, {
@@ -602,6 +620,7 @@ export default function AIStylistChat() {
         headers: {
           "Content-Type": "application/json"
         },
+        signal: abortControllerRef.current.signal,
         body: JSON.stringify({
           message: cleanInput,
           chatHistory: messages,
@@ -669,7 +688,7 @@ export default function AIStylistChat() {
         <div className="flex flex-col gap-2 my-2 max-w-[85%] ml-0 mr-auto w-full shrink-0">
           <OptionButton onClick={() => handleMenuOption("track")}>Track my order</OptionButton>
           <OptionButton onClick={() => handleMenuOption("fabric")}>Find fabric</OptionButton>
-          <OptionButton onClick={() => handleMenuOption("styling")}>Styling for occasion</OptionButton>
+          <OptionButton onClick={() => handleMenuOption("sourcing")}>Fabric Sourcing Assistant</OptionButton>
           <OptionButton onClick={() => handleMenuOption("return")}>Return Policy</OptionButton>
         </div>
       );
@@ -771,7 +790,7 @@ export default function AIStylistChat() {
     }
 
     // Fallback for custom policy flows that need a back button
-    if (currentFlow !== "styling") {
+    if (currentFlow !== "sourcing") {
       return (
         <div className="flex flex-col gap-2 my-2 max-w-[85%] ml-0 mr-auto w-full shrink-0">
           <button
